@@ -1,0 +1,26 @@
+/* body {
+    background-color: #626d71;
+    background-color: #cdcdc0;
+    background-color: #b38867;
+    background-color: #ddbc95;
+} */
+body {
+
+    background-color: #cdcdc0;
+
+}
+
+
+.buku {
+    background-color: #ddbc95;
+    text-align: center;
+}
+
+/* 
+.navbar {
+    background-color: #626d71;
+} */
+
+#gambar {
+    height: 80px;
+}
