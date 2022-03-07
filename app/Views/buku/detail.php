@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 <div class="container">
     <div class="row">
-        <div class="col-4">
+        <div class="col-lg-4 col-md-12 col-sm-12">
             <div class="card mb-3 mt-4">
                 <div class="card-body">
                     <h5 class="card-title"><?= $buku['judul']; ?></h5>
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-8">
+        <div class="col-lg-8 col-md-12 col-sm-12">
             <div class="card mb-3 mt-4">
                 <img src="<?= base_url(); ?>/img/<?= $buku['sampul']; ?>" alt="card-img">
                 <div class="card-body">

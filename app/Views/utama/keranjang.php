@@ -10,7 +10,7 @@
     <?php endif; ?>
     <div class="row">
         <div class="col">
-            <table class="table">
+            <table class="table table-responsive-sm table-responsive-md">
                 <thead>
 
                     <tr>
