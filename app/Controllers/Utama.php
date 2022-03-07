@@ -74,16 +74,17 @@ class Utama extends BaseController
     {
         $id_user = $this->request->getvar('id_user');
         $id_buku = $this->request->getvar('id_buku');
+        // $stok = $this->request->getvar('stok');
         $jumlahbeli = $this->request->getvar('jumlah_beli');
-
-
-
         $bukulama = $this->UtamaModel->getChekout($id_user, $id_buku);
 
-        $hasiljumlah = $jumlahbeli + $bukulama['jumlah_beli'];
+        // if ($stok > 0) {
+
+
 
         if ($bukulama) {
 
+            $hasiljumlah = $jumlahbeli + $bukulama['jumlah_beli'];
 
             $this->UtamaModel->save(
                 [
@@ -104,6 +105,7 @@ class Utama extends BaseController
         }
 
 
+
         // $this->UtamaModel->save(
         //     [
         //         'jumlah_beli' => $this->request->getVar('jumlah_beli'),
@@ -115,6 +117,10 @@ class Utama extends BaseController
 
         session()->setFlashdata('pesan', 'Data masuk ke keranjang .');
         return redirect()->to('/utama');
+        // } else {
+
+        //     return redirect()->to('/utama');
+        // }
     }
 
     // public function chekout($id_keranjang)

@@ -27,8 +27,11 @@
                     <?php $i = 1; ?>
                     <?php $jumlah = 0; ?>
 
+
                     <?php foreach ($keranjang as $k) : ?>
-                        <?php $jumlah += $k['harga']; ?>
+                        <?php $jumlah_persatuan = $k['harga'] * $k['jumlah_beli']; ?>
+                        <?php $jumlah += $jumlah_persatuan; ?>
+
                         <tr>
                             <th scope="row"><?= $i++; ?></th>
                             <td><?= $k['judul']; ?></td>
@@ -36,7 +39,7 @@
                             <!-- <td>= $b['kategori'] </td> -->
                             <td><?= $k['stok'] -= $k['jumlah_beli']; ?></td>
                             <td><?= $k['jumlah_beli'] ?></td>
-                            <td><?= number_to_currency($k['harga'], 'IDR'); ?></td>
+                            <td><?= number_to_currency($jumlah_persatuan, 'IDR'); ?></td>
                             <td>
 
                                 <form action="/utama/cancel/<?= $k['id_keranjang']; ?>" method="post" class="d-inline">

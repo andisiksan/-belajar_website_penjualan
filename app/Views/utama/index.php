@@ -48,6 +48,12 @@
                                     <h5 class="card-title"><?= $b['judul']; ?></h5>
                                     <p class="card-text"><?= number_to_currency($b['harga'], 'IDR'); ?></p>
                                     <p class="card-text"><?= $b['sinopsis']; ?></p>
+
+                                    <?php $habis = "Habis" ?>
+                                    <?php $tersedia = "Tersedia" ?>
+                                    <?php $output = ($b['stok'] < 1) ? $habis : $tersedia ?>
+
+                                    <p class="card-text">Stok <?= $output; ?></p>
                                     <p class="card-text">Stok <?= $b['stok']; ?></p>
 
 
@@ -62,7 +68,7 @@
 
 
 
-                                    <button type="submit" class="btn btn-primary">tambah ke keranjang</button>
+                                    <button type="submit" class="btn btn-primary ">tambah ke keranjang</button>
 
 
 
