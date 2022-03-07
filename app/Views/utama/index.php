@@ -66,11 +66,11 @@
                                         </select></p>
 
 
-
-
-                                    <button type="submit" class="btn btn-primary ">tambah ke keranjang</button>
-
-
+                                    <?php if ($b["stok"] < 1) : ?>
+                                        <button type="button" class="btn btn-secondary" disabled>tambah ke keranjang</button>
+                                    <?php else : ?>
+                                        <button type="submit" class="btn btn-primary ">tambah ke keranjang</button>
+                                    <?php endif; ?>
 
 
 
