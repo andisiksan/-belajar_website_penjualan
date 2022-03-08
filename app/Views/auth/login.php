@@ -3,12 +3,22 @@
 
 
 <?= $this->section('content'); ?>
+
+
+
+
 <div class="container">
 
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
         <div class="col-lg-6">
+
+            <?php if (session()->getFlashdata('pesan')) : ?>
+                <div class="alert alert-dark" role="alert">
+                    <?= session()->getFlashdata('pesan'); ?>
+                </div>
+            <?php endif; ?>
 
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
@@ -19,12 +29,18 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Login</h1>
                                 </div>
-                                <form class="user">
+                                <form class="user" method="POST" action="<?= base_url('auth/login') ?>">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Enter Email Address...">
+                                        <input type="text" class="form-control form-control-user <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" id="email" name="email" placeholder="Enter Email Address...">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('email'); ?>
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
+                                        <input type="password" class="form-control form-control-user  <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" id="password" name="password" placeholder="Password">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('password'); ?>
+                                        </div>
                                     </div>
 
                                     <button type="submit" class="btn btn-primary btn-user btn-block">
