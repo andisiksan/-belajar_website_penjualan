@@ -31,13 +31,13 @@
                                 </div>
                                 <form class="user" method="POST" action="<?= base_url('auth/login') ?>">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" id="email" name="email" placeholder="Enter Email Address...">
+                                        <input type="text" class="form-control form-control-user <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" id="email" name="email" autofocus value="<?= old('email'); ?>" placeholder="Enter Email Address...">
                                         <div class="invalid-feedback">
                                             <?= $validation->getError('email'); ?>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user  <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" id="password" name="password" placeholder="Password">
+                                        <input type="password" class="form-control form-control-user  <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" id="password" name="password" autofocus value="<?= old('password'); ?>" placeholder="Password">
                                         <div class="invalid-feedback">
                                             <?= $validation->getError('password'); ?>
                                         </div>
