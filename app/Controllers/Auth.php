@@ -80,8 +80,16 @@ class Auth extends BaseController
 
         $this->UserModel->save(
             [
-                'name' => htmlspecialchars($this->request->getVar('name')),
-                'email' => htmlspecialchars($this->request->getVar('email')),
+                // 'name' => htmlspecialchars($this->request->getVar('name')),
+                // 'email' => htmlspecialchars($this->request->getVar('email')),
+                //menambahkan true agar menghindari serangan xss
+                // Cross site scripting ini sering digunakan untuk mencuri session cookies, 
+                // yang memungkinkan penyerang untuk menyamar sebagai korban. Dengan cara inilah
+                // , peretas bisa mengetahui data-data sensitif milik korban.
+
+                // Perlu Anda ketahui, serangan cross site scripting disingkat menjadi XSS
+                'name' => htmlspecialchars($this->request->getVar('name', true)),
+                'email' => htmlspecialchars($this->request->getVar('email', true)),
                 'image' => 'default.jpg',
                 'password' => password_hash($this->request->getVar('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
@@ -130,6 +138,10 @@ class Auth extends BaseController
             if ($user['is_active'] == 1) {
 
                 // cek password
+                // if (password_verify($password, $user['password'])) 
+                // { yang artinya $password diambil dri inputan
+                // dan $user ['paswword] dari database
+
                 if (password_verify($password, $user['password'])) {
                     $data = [
                         'name' => $user['name'],
@@ -139,9 +151,12 @@ class Auth extends BaseController
                     ];
 
 
+                    // session()->set($data);berfungsi sebagai variabel yang 
+                    // dmana dpat diakses disemua halaman
+
                     session()->set($data);
 
-                    return redirect()->to('/home');
+                    return redirect()->to('/admin/index');
                 } else {
                     session()->setFlashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">Worng password!');
                     return redirect()->to('/auth');
@@ -157,5 +172,19 @@ class Auth extends BaseController
 
             return redirect()->to('/auth');
         }
+    }
+
+    public function logout()
+    {
+
+        // remove sama seperti unset
+
+        session()->remove('email');
+        session()->remove('role_id');
+
+
+        session()->setFlashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">anda berhasil keluar');
+
+        return redirect()->to('/auth');
     }
 }
