@@ -16,30 +16,6 @@ class Admin extends BaseController
         // helper('number');
     }
 
-    //     public function index()
-    //     {
-    //         $data = [
-    //             'title' => 'hai',
-    //             // 'user' => $this->UserModel->findAll(),
-    //             'user' => $this->UserModel->get_where('user', ['email' =>
-    //             $this->session->userdata('email')])->first(),
-    //             'validation' => \Config\Services::validation()
-    //         ];
-    //         return view('user/admin', $data);
-    //     }
-    // }
-
-
-
-
-    //     public function index()
-    //     {
-
-    //    $data['user'] => $this->UserModel->get_where('user', ['email' => $this->session->set('email')])->first();
-    //             echo 'selamat datang'. $data['user']['name'];
-    //     }
-    // }
-
     public function index()
     {
         $user = $this->UserModel->where(['email' => session()->get('email')])->first();

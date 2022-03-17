@@ -88,12 +88,13 @@ class Auth extends BaseController
                 // , peretas bisa mengetahui data-data sensitif milik korban.
 
                 // Perlu Anda ketahui, serangan cross site scripting disingkat menjadi XSS
-                'name' => htmlspecialchars($this->request->getVar('name', true)),
-                'email' => htmlspecialchars($this->request->getVar('email', true)),
+                'name' => htmlspecialchars($this->request->getVar('name')),
+                'email' => htmlspecialchars($this->request->getVar('email')),
                 'image' => 'default.jpg',
                 'password' => password_hash($this->request->getVar('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
-                'is_active' => 1
+                'is_active' => 1,
+                'date_created' => time()
 
             ]
         );
