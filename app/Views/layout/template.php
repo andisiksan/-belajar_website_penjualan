@@ -54,7 +54,7 @@
                         <a class="nav-link" href="/utama/detailkeranjang">Keranjang</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/komik">Komik</a>
+                        <a class="nav-link" href="/auth/logout">keluar</a>
                     </li>
                 </ul>
             </div>

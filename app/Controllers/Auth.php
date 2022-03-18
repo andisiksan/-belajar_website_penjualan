@@ -158,12 +158,12 @@ class Auth extends BaseController
                     session()->set($data);
 
 
-
-                    if (session()->role_id == 1) {
-                        return redirect()->to('/admin/index');
-                    } else {
-                        return redirect()->to('/utama/index');
-                    }
+                    //logika membatasi hak akses
+                    // if (session()->role_id == 1) {
+                    //     return redirect()->to('/admin/index');
+                    // } else {
+                    //     return redirect()->to('/utama/index');
+                    // }
                 } else {
                     session()->setFlashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">Worng password!');
                     return redirect()->to('/auth');

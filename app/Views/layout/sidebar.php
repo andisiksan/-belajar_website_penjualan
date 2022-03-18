@@ -64,7 +64,7 @@
 
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="/admin/index">
                         <i class="fa-solid fa-user-secret"></i>
                         <span>My Profile</span></a>
                 </li>
